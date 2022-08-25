@@ -30,7 +30,7 @@ const Product = ({isgift}) => {
         <hr></hr>
         <p>
           Price:
-          <span className="price"> ${isgift?denomination-((denomination*2)/100):book.price}</span>
+          <span className="price"> ${isgift?denomination:book.price}</span>
         </p>
         {!isgift ?
           <p>
@@ -44,7 +44,7 @@ const Product = ({isgift}) => {
         </p>
       </div>
       <div className="purchase-details">
-      <Purchase isgift={isgift} denomination={denomination-((denomination*2)/100)} setdDenomination={(data)=>setdDenomination(data)} book={book}/>
+      <Purchase isgift={isgift} denomination={denomination} setdDenomination={(data)=>setdDenomination(data)} book={book}/>
       </div>
     </div>
   </div>

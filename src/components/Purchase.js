@@ -1,3 +1,4 @@
+import React,{useEffect} from 'react'
 import {Select, Button, Modal, Input} from 'antd'
 import {ShoppingCartOutlined} from "@ant-design/icons";
 import { useState } from 'react';
@@ -14,6 +15,9 @@ function Purchase({book,setdDenomination,denomination,isgift}) {
   const [denominationReal,setDenominationReal]=useState(book.denomination[0])
 
   const {Moralis, account, chainId} = useMoralis();
+  useEffect(()=>{
+    setdDenomination(denomination-(denomination*2)/100)
+  },[])
 
   const handleOk = async () => {
 
@@ -77,6 +81,8 @@ function Purchase({book,setdDenomination,denomination,isgift}) {
   const handelQtyChange=(data,demo)=>{
     //
       let single = (demo-(demo*2/100).toFixed(2))
+      console.log('single',single*data)
+
       setDenominationReal(demo)
       setdDenomination(single*data)
     // }
@@ -89,7 +95,7 @@ function Purchase({book,setdDenomination,denomination,isgift}) {
       setDenominationReal(data)
       setQty(qty)
   }
-
+  console.log('denomination',denomination)
   return (
     <>
       <div>
